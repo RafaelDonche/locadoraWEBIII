@@ -15,8 +15,8 @@ class CreateLocacaosTable extends Migration
     {
         Schema::create('locacaos', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('data_emprestimo');
-            $table->date('data_devolucao');
+            $table->date('data_emprestimo')->nullable();
+            $table->date('data_devolucao')->nullable();
             $table->integer('id_cliente')->unsigned();
             $table->foreign('id_cliente')->references('id')->on('clientes');
             $table->timestamps();

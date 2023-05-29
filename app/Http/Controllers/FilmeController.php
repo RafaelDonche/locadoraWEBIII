@@ -7,6 +7,7 @@ use App\Models\Genero;
 use App\Models\Locacao;
 use App\Models\LocacaoFilme;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class FilmeController extends Controller
 {
@@ -62,7 +63,7 @@ class FilmeController extends Controller
             $filme->diretor = $request->diretor;
             $filme->valor = str_replace(",", ".", str_replace(".", "", $request->valor));
             $filme->id_genero = $request->id_genero;
-            
+
             if ($request->hasFile('imagem')) {
                 $file = $request->file('imagem');
                 $upload = $file->store('public/imagens');
@@ -129,6 +130,19 @@ class FilmeController extends Controller
             $filme->diretor = $request->diretor;
             $filme->valor = str_replace(",", ".", str_replace(".", "", $request->valor));
             $filme->id_genero = $request->id_genero;
+
+            if ($request->hasFile('imagem')) {
+
+                Storage::delete("public/imagens/".$filme->imagem);
+                $filme->imagem = null;
+
+                $file = $request->file('imagem');
+                $upload = $file->store('public/imagens');
+                $upload = explode("/", $upload);
+                $tamanho = sizeof($upload);
+                $filme->imagem = $upload[$tamanho-1];
+            }
+
             $filme->save();
 
             return redirect()->route('filme.index')->with('success', 'Cadastro editado com sucesso!');

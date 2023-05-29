@@ -16,10 +16,10 @@ class CreateFilmesTable extends Migration
         Schema::create('filmes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome');
-            $table->integer('ano_lancamento');
-            $table->string('diretor');
+            $table->integer('ano_lancamento')->nullable();
+            $table->string('diretor')->nullable();
             $table->double('valor');
-            $table->string('imagem');
+            $table->string('imagem')->nullable();
             $table->integer('id_genero')->unsigned();
             $table->foreign('id_genero')->references('id')->on('generos');
             $table->timestamps();

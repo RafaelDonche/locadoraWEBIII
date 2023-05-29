@@ -2,7 +2,7 @@
 
 @section('conteudo')
     <div class="col-md-12 mb-2">
-        <h1>Cadastro de Locações</h1>
+        <h1>Cadastro de locações</h1>
     </div>
     <div class="col-md-12">
         <form action="{{ route('locacao.store') }}" method="post">

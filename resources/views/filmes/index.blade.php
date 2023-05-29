@@ -2,7 +2,7 @@
 
 @section('conteudo')
     <div class="col-md-12 d-flex justify-content-between align-items-center mb-2">
-        <h1>Listagem de Filmes</h1>
+        <h1>Listagem de filmes</h1>
         <a href="{{ route('filme.create') }}" class="btn btn-primary">Novo</a>
     </div>
     <table class="table table-bordered table-striped">
@@ -21,16 +21,16 @@
         <tbody>
             @foreach($filmes as $f)
             <tr>
-                <td>{{$f->id}}</td>
+                <td>{{ $f->id }}</td>
                 <td>
-                    @if ($f->imagem != "")
-                        <img style="width: 100px;" src="{{ asset('storage/imagens/'.$f->imagem) }}">
+                    @if ($f->src_img() != '')
+                        <img style="width: 100px; height: 130px;" src="{{ $f->src_img() }}">
                     @endif
                 </td>
-                <td>{{$f->nome}}</td>
-                <td>{{$f->genero->nome}}</td>
-                <td>{{$f->ano_lancamento}}</td>
-                <td>{{$f->diretor}}</td>
+                <td>{{ $f->nome }}</td>
+                <td>{{ $f->genero->nome }}</td>
+                <td>{{ $f->ano_lancamento }}</td>
+                <td>{{ $f->diretor }}</td>
                 <td>{{ number_format($f->valor,2,',','.')}}</td>
                 <td class="d-flex">
                     <a class="btn btn-secondary m-1" href="{{ route('filme.edit', $f->id) }}">Editar</a>

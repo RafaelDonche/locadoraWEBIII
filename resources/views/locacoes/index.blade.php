@@ -2,7 +2,7 @@
 
 @section('conteudo')
     <div class="col-md-12 d-flex justify-content-between align-items-center mb-2">
-        <h1>Listagem de Locações</h1>
+        <h1>Listagem de locações</h1>
         <a href="{{ route('locacao.create') }}" class="btn btn-primary">Novo</a>
     </div>
     <table class="table table-bordered table-striped">

@@ -2,7 +2,7 @@
 
 @section('conteudo')
     <div class="col-md-12 mb-2">
-        <h1>Edição de Gênero</h1>
+        <h1>Edição de gênero</h1>
     </div>
     <div class="col-md-12">
         <form action="{{ route('genero.update', $genero->id) }}" method="post">
