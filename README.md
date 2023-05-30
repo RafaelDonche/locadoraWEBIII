@@ -1,3 +1,3 @@
--> Modifique o .env para as configurações de acesso do seu banco de dados.
--> Use o comando 'php artisan migrate --seed' para usar criar as tabelas e dados exemplos.
+-> Modifique o .env para as configurações de acesso do seu banco de dados. <br>
+-> Use o comando 'php artisan migrate --seed' para usar criar as tabelas e dados exemplos.  <br>
 -> Use o comando 'php artisan serve' para iniciar o servidor local.
