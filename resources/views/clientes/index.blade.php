@@ -21,10 +21,12 @@
                 <td>{{$c->id}}</td>
                 <td>{{$c->nome}}</td>
                 <td>{{$c->cpf}}</td>
+                <td>{{$c->email}}</td>
                 <td>{{ date('d/m/Y', strtotime($c->data_nascimento)) }}</td>
-                <td class="d-flex">
+                <td>
                     <a class="btn btn-secondary m-1" href="{{ route('cliente.edit', $c->id) }}">Editar</a>
                     <a class="btn btn-danger m-1" href="{{ route('cliente.destroy', $c->id) }}">Excluir</a>
+                    <a class="btn btn-info m-1" href="{{ route('cliente.mensagem', $c->id) }}">Mensagem</a>
                 </td>
             </tr>
             @endforeach

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ClienteMensagem;
 use App\Models\Cliente;
 use App\Models\Locacao;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ClienteController extends Controller
 {
@@ -55,6 +57,7 @@ class ClienteController extends Controller
             $cliente = new Cliente();
             $cliente->nome = $request->nome;
             $cliente->cpf = $request->cpf;
+            $cliente->email = $request->email;
             $cliente->data_nascimento = $request->data_nascimento;
             $cliente->save();
 
@@ -109,6 +112,7 @@ class ClienteController extends Controller
             $cliente = Cliente::find($id);
             $cliente->nome = $request->nome;
             $cliente->cpf = $request->cpf;
+            $cliente->email = $request->email;
             $cliente->data_nascimento = $request->data_nascimento;
             $cliente->save();
 
@@ -141,6 +145,32 @@ class ClienteController extends Controller
             $cliente->delete();
 
             return redirect()->route('cliente.index')->with('success', 'Cadastro excluído com sucesso!');
+
+        } catch (\Exception $ex) {
+            return $ex->getMessage();
+        }
+    }
+
+    public function mensagem($id)
+    {
+        try {
+
+            $cliente = Cliente::find($id) ;
+            return view('clientes.mensagem', compact('cliente'));
+
+        } catch (\Exception $ex) {
+            return $ex->getMessage();
+        }
+    }
+
+    public function enviarMensagem(Request $request)
+    {
+        try {
+
+            $cliente = Cliente::find($request->input('id'));
+            Mail::to($cliente->email)->send(new ClienteMensagem($cliente, $request->input('mensagem')));
+
+            return redirect()->route('cliente.index')->with('success', 'Mensagem enviada com sucesso!');
 
         } catch (\Exception $ex) {
             return $ex->getMessage();

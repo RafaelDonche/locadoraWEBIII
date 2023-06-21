@@ -3,7 +3,10 @@
 @section('conteudo')
     <div class="col-md-12 d-flex justify-content-between align-items-center mb-2">
         <h1>Listagem de locações</h1>
-        <a href="{{ route('locacao.create') }}" class="btn btn-primary">Novo</a>
+        <div class="d-flex">
+            <a href="{{ route('locacao.create') }}" class="btn btn-primary m-1">Novo</a>
+            <a href="{{ route('locacao.relatorio') }}" class="btn btn-primary m-1">Relatório</a>
+        </div>
     </div>
     <table class="table table-bordered table-striped">
         <thead>
@@ -28,9 +31,11 @@
                 <td>{{ date('d/m/Y', strtotime($l->data_emprestimo)) }}</td>
                 <td>{{ date('d/m/Y', strtotime($l->data_devolucao)) }}</td>
                 <td>
-                    @foreach ($l->filmes as $filmes)
-                        {{ $filmes->filme->nome }} <br>
-                    @endforeach
+                    <ul>
+                        @foreach ($l->filmes as $filmes)
+                            <li>{{ $filmes->filme->nome }}</li>
+                        @endforeach
+                    </ul>
                 </td>
                 <td>
                     @foreach ($l->filmes as $filmes)
@@ -38,9 +43,9 @@
                         $total = $total + $filmes->filme->valor;
                     @endphp
                     @endforeach
-                    {{ $total }}
+                    R$ {{ number_format($total, '2', ',', '.') }}
                 </td>
-                <td class="d-flex">
+                <td>
                     <a class="btn btn-secondary m-1" href="{{ route('locacao.edit', $l->id) }}">Editar</a>
                     <a class="btn btn-danger m-1" href="{{ route('locacao.destroy', $l->id) }}">Excluir</a>
                 </td>

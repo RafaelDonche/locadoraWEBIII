@@ -21,6 +21,9 @@
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
+        {{-- icons --}}
+        <script src="https://kit.fontawesome.com/d9efef6359.js" crossorigin="anonymous"></script>
+
         <style>
             body {
                 font-family: 'Ubuntu', sans-serif !important;
@@ -111,23 +114,30 @@
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{url('/')}}">Home</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('filme.index') }}">Filmes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('genero.index') }}">Gêneros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('cliente.index') }}">Clientes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('locacao.index') }}">Locações</a>
-                    </li>
-                </ul>
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ route('filme.index') }}">Filmes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ route('genero.index') }}">Gêneros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ route('cliente.index') }}">Clientes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ route('locacao.index') }}">Locações</a>
+                        </li>
+                    </ul>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <a class="text-right" href="{{ route('logout') }}" onclick="event.preventDefault();
+                            this.closest('form').submit();">
+                            <i class="fa-solid fa-right-from-bracket fa-lg"></i>
+                        </a>
+                    </form>
                 </div>
             </div>
         </nav>

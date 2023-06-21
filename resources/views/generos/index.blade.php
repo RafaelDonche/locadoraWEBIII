@@ -18,7 +18,7 @@
             <tr>
                 <td>{{$g->id}}</td>
                 <td>{{$g->nome}}</td>
-                <td class="d-flex">
+                <td>
                     <a class="btn btn-secondary m-1" href="{{ route('genero.edit', $g->id) }}">Editar</a>
                     <a class="btn btn-danger m-1" href="{{ route('genero.destroy', $g->id) }}">Excluir</a>
                 </td>

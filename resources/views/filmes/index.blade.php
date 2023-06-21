@@ -31,8 +31,8 @@
                 <td>{{ $f->genero->nome }}</td>
                 <td>{{ $f->ano_lancamento }}</td>
                 <td>{{ $f->diretor }}</td>
-                <td>{{ number_format($f->valor,2,',','.')}}</td>
-                <td class="d-flex">
+                <td>R$ {{ number_format($f->valor,2,',','.')}}</td>
+                <td>
                     <a class="btn btn-secondary m-1" href="{{ route('filme.edit', $f->id) }}">Editar</a>
                     <a class="btn btn-danger m-1" href="{{ route('filme.destroy', $f->id) }}">Excluir</a>
                 </td>

@@ -17,6 +17,10 @@
                     <input class="form-control" type="text" name="cpf" id="cpf">
                 </div>
                 <div class="col-md-6 mb-3">
+                    <label class="form-label" for="email">Email</label>
+                    <input class="form-control" type="text" name="email" id="email">
+                </div>
+                <div class="col-md-6 mb-3">
                     <label class="form-label" for="data_nascimento">Data de nascimento</label>
                     <input class="form-control" type="date" name="data_nascimento">
                 </div>

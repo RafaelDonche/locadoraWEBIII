@@ -6,6 +6,7 @@ use App\Models\Cliente;
 use App\Models\Filme;
 use App\Models\Locacao;
 use App\Models\LocacaoFilme;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class LocacaoController extends Controller
@@ -167,6 +168,17 @@ class LocacaoController extends Controller
 
             return redirect()->route('locacao.index')->with('success', 'Cadastro excluído com sucesso!');
 
+        } catch (\Exception $ex) {
+            return $ex->getMessage();
+        }
+    }
+
+    public function relatorio()
+    {
+        try {
+            $locacoes = Locacao::all();
+            $pdf = Pdf::loadView('locacoes.relatorio', compact('locacoes'))->setPaper('a4', 'landscape');
+            return $pdf->stream('locações.pdf');
         } catch (\Exception $ex) {
             return $ex->getMessage();
         }

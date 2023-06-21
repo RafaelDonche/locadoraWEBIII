@@ -11,6 +11,7 @@ class Cliente extends Model
     protected $fillable = [
         'nome',
         'cpf',
+        'email',
         'data_nascimento',
     ];
 
